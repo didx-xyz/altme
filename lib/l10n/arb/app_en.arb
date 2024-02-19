@@ -1038,8 +1038,7 @@
   "thisTypeProofCannotBeUsedWithThisVCFormat": "This type proof cannot be used with this VC Format.",
   "enterprise": "Enterprise",
   "oWFBaselineProfile": "OWF Baseline Profile",
-  "defaultProfile":"Default"
-  "thisTypeProofCannotBeUsedWithThisVCFormat": "This type proof cannot be used with this VC Format.",
+  "defaultProfile":"Default",
   "setupMobileNumberPay":"Didx:pay Mobile Number",
   "setupMobileDescriptionPay":"Receive/make payments via your phone number"
 }

@@ -941,12 +941,13 @@
     "theLdpFormatIsNotSupportedByThisDIDMethod",
     "switchOffCryptoHolderBindingForThatDIDMethod",
     "thisTypeProofCannotBeUsedWithThisVCFormat",
-    "setupMobileNumberPay",
-    "setupMobileDescriptionPay",
     "enterprise",
     "oWFBaselineProfile",
-    "defaultProfile"
+    "defaultProfile",
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
   ],
+
   "es": [
     "genericError",
     "credentialListTitle",
@@ -1891,8 +1892,16 @@
     "thisTypeProofCannotBeUsedWithThisVCFormat",
     "enterprise",
     "oWFBaselineProfile",
-    "defaultProfile"
+    "defaultProfile",
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
   ],
+
+  "fr": [
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
+  ],
+
   "it": [
     "genericError",
     "credentialListTitle",
@@ -2835,10 +2844,10 @@
     "theLdpFormatIsNotSupportedByThisDIDMethod",
     "switchOffCryptoHolderBindingForThatDIDMethod",
     "thisTypeProofCannotBeUsedWithThisVCFormat",
-    "setupMobileNumberPay",
-    "setupMobileDescriptionPay",
     "enterprise",
     "oWFBaselineProfile",
-    "defaultProfile"
+    "defaultProfile",
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
   ]
 }
