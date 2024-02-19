@@ -719,29 +719,42 @@ class ScanCubit extends Cubit<ScanState> {
           filterList: filterList,
           credentialList: [credentialsToBePresented[i]],
         );
+
+        final pathNested = {
+          'id': inputDescriptor.id,
+          'format': vcFormat,
+        };
+
         if (credential.isNotEmpty) {
           if (credentialsToBePresented.length == 1) {
+            if (vpFormat == 'ldp_vp') {
+              pathNested['path'] = r'$.verifiableCredential';
+            } else {
+              pathNested['path'] = r'$.vp.verifiableCredential[0]';
+            }
+
             inputDescriptors.add({
               'id': inputDescriptor.id,
               'format': vpFormat,
               'path': r'$',
-              'path_nested': {
-                'id': inputDescriptor.id,
-                'format': vcFormat,
-                'path': r'$.verifiableCredential',
-              },
+              'path_nested': pathNested,
             });
           } else {
+            if (vpFormat == 'ldp_vp') {
+              pathNested['path'] =
+                  // ignore: prefer_interpolation_to_compose_strings
+                  r'$.verifiableCredential[' + i.toString() + ']';
+            } else {
+              pathNested['path'] =
+                  // ignore: prefer_interpolation_to_compose_strings
+                  r'$.vp.verifiableCredential[' + i.toString() + ']';
+            }
+
             inputDescriptors.add({
               'id': inputDescriptor.id,
               'format': vpFormat,
               'path': r'$',
-              'path_nested': {
-                'id': inputDescriptor.id,
-                'format': vcFormat,
-                // ignore: prefer_interpolation_to_compose_strings
-                'path': r'$.verifiableCredential[' + i.toString() + ']',
-              },
+              'path_nested': pathNested,
             });
           }
         }
@@ -894,9 +907,6 @@ class ScanCubit extends Cubit<ScanState> {
     final customOidc4vcProfile = profileCubit.state.model.profileSetting
         .selfSovereignIdentityOptions.customOidc4vcProfile;
 
-    final enableJWKThumbprint =
-        customOidc4vcProfile.subjectSyntaxeType == SubjectSyntax.jwkThumbprint;
-
     final idToken = await oidc4vc.extractIdToken(
       clientId: clientId,
       credentialsToBePresented: credentialList,
@@ -904,7 +914,7 @@ class ScanCubit extends Cubit<ScanState> {
       kid: kid,
       privateKey: privateKey,
       nonce: nonce,
-      useJWKThumbPrint: enableJWKThumbprint,
+      clientType: customOidc4vcProfile.clientType,
       proofHeaderType: customOidc4vcProfile.proofHeader,
     );
 
