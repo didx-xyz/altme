@@ -85,6 +85,16 @@ class DrawerView extends StatelessWidget {
                             .push<void>(WalletSecurityMenu.route());
                       },
                     ),
+                    const SizedBox(height: Sizes.spaceSmall),
+                    DrawerCategoryItem(
+                      title: l10n.setupMobileNumberPay,
+                      subTitle: l10n.setupMobileDescriptionPay,
+                      onClick: () {
+                        Navigator.of(context)
+                            .push<void>(WalletSecurityMenu.route());
+                      },
+                    ),
+
                     if (Parameters.walletHandlesCrypto)
                       Column(
                         children: [
@@ -149,7 +159,6 @@ class DrawerView extends StatelessWidget {
                     //         .push<void>(CheckForLinkedInProfile.route());
                     //   },
                     // ),
-                    //const SizedBox(height: Sizes.spaceSmall),
 
                     if (profileModel
                         .profileSetting.settingsMenu.displayHelpCenter) ...[

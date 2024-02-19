@@ -940,7 +940,9 @@
     "walletProvider",
     "theLdpFormatIsNotSupportedByThisDIDMethod",
     "switchOffCryptoHolderBindingForThatDIDMethod",
-    "thisTypeProofCannotBeUsedWithThisVCFormat"
+    "thisTypeProofCannotBeUsedWithThisVCFormat",
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
   ],
 
   "es": [
@@ -1884,7 +1886,9 @@
     "walletProvider",
     "theLdpFormatIsNotSupportedByThisDIDMethod",
     "switchOffCryptoHolderBindingForThatDIDMethod",
-    "thisTypeProofCannotBeUsedWithThisVCFormat"
+    "thisTypeProofCannotBeUsedWithThisVCFormat",
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
   ],
 
   "fr": [
@@ -2153,7 +2157,9 @@
     "walletProvider",
     "theLdpFormatIsNotSupportedByThisDIDMethod",
     "switchOffCryptoHolderBindingForThatDIDMethod",
-    "thisTypeProofCannotBeUsedWithThisVCFormat"
+    "thisTypeProofCannotBeUsedWithThisVCFormat",
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
   ],
 
   "it": [
@@ -3097,6 +3103,8 @@
     "walletProvider",
     "theLdpFormatIsNotSupportedByThisDIDMethod",
     "switchOffCryptoHolderBindingForThatDIDMethod",
-    "thisTypeProofCannotBeUsedWithThisVCFormat"
+    "thisTypeProofCannotBeUsedWithThisVCFormat",
+    "setupMobileNumberPay",
+    "setupMobileDescriptionPay"
   ]
 }
