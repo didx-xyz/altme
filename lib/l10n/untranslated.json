@@ -945,7 +945,10 @@
     "oWFBaselineProfile",
     "defaultProfile",
     "setupMobileNumberPay",
-    "setupMobileDescriptionPay"
+    "setupMobileDescriptionPay",
+    "readProxy",
+    "updateProxy",
+    "deleteProxy"
   ],
 
   "es": [
@@ -1894,12 +1897,18 @@
     "oWFBaselineProfile",
     "defaultProfile",
     "setupMobileNumberPay",
-    "setupMobileDescriptionPay"
+    "setupMobileDescriptionPay",
+    "readProxy",
+    "updateProxy",
+    "deleteProxy"
   ],
 
   "fr": [
     "setupMobileNumberPay",
-    "setupMobileDescriptionPay"
+    "setupMobileDescriptionPay",
+    "readProxy",
+    "updateProxy",
+    "deleteProxy"
   ],
 
   "it": [
@@ -2848,6 +2857,9 @@
     "oWFBaselineProfile",
     "defaultProfile",
     "setupMobileNumberPay",
-    "setupMobileDescriptionPay"
+    "setupMobileDescriptionPay",
+    "readProxy",
+    "updateProxy",
+    "deleteProxy"
   ]
 }

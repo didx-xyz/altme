@@ -1040,5 +1040,8 @@
   "oWFBaselineProfile": "OWF Baseline Profile",
   "defaultProfile":"Default",
   "setupMobileNumberPay":"Didx:pay Mobile Number",
-  "setupMobileDescriptionPay":"Receive/make payments via your phone number"
+  "setupMobileDescriptionPay":"Receive/make payments via your phone number",
+  "readProxy":"Show current number to wallet link",
+  "updateProxy":"Update number to wallet link",
+  "deleteProxy":"Delete number to wallet link"
 }

@@ -91,7 +91,7 @@ class DrawerView extends StatelessWidget {
                       subTitle: l10n.setupMobileDescriptionPay,
                       onClick: () {
                         Navigator.of(context)
-                            .push<void>(WalletSecurityMenu.route());
+                            .push<void>(DidxPaySettings.route());
                       },
                     ),
 
