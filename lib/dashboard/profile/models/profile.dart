@@ -1,6 +1,7 @@
 import 'package:altme/app/app.dart';
 import 'package:altme/dashboard/profile/models/profile_setting.dart';
 import 'package:equatable/equatable.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:oidc4vc/oidc4vc.dart';
 
@@ -8,6 +9,7 @@ part 'profile.g.dart';
 
 @JsonSerializable()
 class ProfileModel extends Equatable {
+  final String? phoneNumber;
   const ProfileModel({
     required this.polygonIdNetwork,
     required this.walletType,
@@ -16,6 +18,7 @@ class ProfileModel extends Equatable {
     required this.profileType,
     required this.profileSetting,
     this.enterpriseWalletName,
+    this.phoneNumber,
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) =>
@@ -280,6 +283,7 @@ class ProfileModel extends Equatable {
   Map<String, dynamic> toJson() => _$ProfileModelToJson(this);
 
   ProfileModel copyWith({
+    String? phoneNumber,
     PolygonIdNetwork? polygonIdNetwork,
     WalletType? walletType,
     WalletProtectionType? walletProtectionType,
@@ -289,6 +293,7 @@ class ProfileModel extends Equatable {
     String? enterpriseWalletName,
   }) {
     return ProfileModel(
+      phoneNumber: phoneNumber ?? this.phoneNumber,
       polygonIdNetwork: polygonIdNetwork ?? this.polygonIdNetwork,
       walletType: walletType ?? this.walletType,
       walletProtectionType: walletProtectionType ?? this.walletProtectionType,

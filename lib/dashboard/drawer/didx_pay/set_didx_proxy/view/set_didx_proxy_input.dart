@@ -36,7 +36,9 @@ class UpdateProxyView extends StatefulWidget {
 }
 
 class _UpdateProxyViewState extends State<UpdateProxyView> {
-  String? phoneNumber;
+  String? phoneNumberInput;
+  String? phoneNumberValidated;
+  String? walletAddress;
 
   @override
   Widget build(BuildContext context) {
@@ -64,22 +66,35 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                         showPoweredBy: true,
                       ),
                       const SizedBox(height: Sizes.spaceSmall),
-                      Text(
-                        l10n.updateProxy,
-                        style: Theme.of(context).textTheme.titleSmall,
+                      // Center the text below
+
+                      Center(
+                        child: Text(
+                          l10n.updateProxy,
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                       ),
-                      const SizedBox(height: Sizes.spaceSmall),
+                      const SizedBox(height: Sizes.spaceNormal),
                       Center(
                         child: InternationalPhoneNumberInput(
                           onInputChanged: (PhoneNumber number) {
                             print(number.phoneNumber);
-                            phoneNumber = number.phoneNumber;
+                            phoneNumberInput = number.phoneNumber;
                           },
                           onInputValidated: (bool value) {
-                            print(value
-                                ? 'Valid phone number'
-                                : 'Invalid phone number');
+                            if (value) {
+                              phoneNumberValidated = phoneNumberInput;
+                            } else {
+                              phoneNumberValidated = null;
+                            }
                           },
+                          inputDecoration: const InputDecoration(
+                            // Use InputDecoration to add an icon inside the input field
+                            hintText: 'Phone number',
+                            prefixIcon: Icon(Icons
+                                .phone), // Adds a phone icon inside the input field
+                            border: OutlineInputBorder(),
+                          ),
                           selectorConfig: const SelectorConfig(
                             selectorType: PhoneInputSelectorType.DIALOG,
                           ),
@@ -124,14 +139,58 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your wallet address';
                           }
-                          // Add more specific validation for wallet address format if needed
+                          // TODO(laderlappen): Add more specific validation for wallet address format if needed
                           return null; // Return null if the input is valid
                         },
-                        onSaved: (value) {
-                          // Save the wallet address
-                          print('Wallet Address: $value');
-                          // You might want to store this in a variable or state management solution
+                        onChanged: (value) {
+                          walletAddress = value;
                         },
+                      ),
+                      const SizedBox(height: Sizes.spaceLarge),
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (phoneNumberValidated != null &&
+                                phoneNumberValidated != "" &&
+                                walletAddress != null &&
+                                walletAddress != "") {
+                              context
+                                  .read<ProfileCubit>()
+                                  .setPhoneNumber(phoneNumberValidated!);
+                              showDialog<bool>(
+                                context: context,
+                                builder: (context) => ConfirmDialog(
+                                  title: 'Updated', //l10n.proxyUpdated,
+                                  yes: l10n.ok,
+                                  showNoButton: false,
+                                ),
+                              );
+                            } else {
+                              showDialog<bool>(
+                                context: context,
+                                builder: (context) => const ConfirmDialog(
+                                  title: 'Error', //l10n.errorDialogTitle,
+                                  subtitle:
+                                      'Make sure to enter a number and address', //l10n.errorDialogSubtitle,
+                                  yes: 'Ok', //l10n.ok,
+                                  showNoButton: false,
+                                ),
+                              );
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(200, 50),
+                            textStyle: const TextStyle(fontSize: 16),
+                          ),
+                          child: Text(l10n.save),
+                        ),
+                      ),
+                      const SizedBox(height: Sizes.spaceNormal),
+                      Center(
+                        child: Text(
+                          'Phone number: ${context.read<ProfileCubit>().state.model.phoneNumber}',
+                          // style: Theme.of(context).textTheme.bodyText1,
+                        ),
                       ),
                     ],
                   ),

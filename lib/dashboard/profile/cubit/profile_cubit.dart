@@ -394,6 +394,11 @@ class ProfileCubit extends Cubit<ProfileState> {
     await update(profileModel);
   }
 
+  Future<void> setPhoneNumber(String phoneNumber) async {
+    final updatedProfile = state.model.copyWith(phoneNumber: phoneNumber);
+    await update(updatedProfile);
+  }
+
   Future<void> updateProfileSetting({
     DidKeyType? didKeyType,
     bool? securityLevel,
