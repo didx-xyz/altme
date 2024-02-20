@@ -1,5 +1,6 @@
 import 'package:altme/app/app.dart';
 import 'package:altme/dashboard/dashboard.dart';
+import 'package:altme/dashboard/home/tab_bar/tokens/widgets/withdrawal_address_via_mobile_input.dart';
 import 'package:altme/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,6 +49,8 @@ class _SendToViewState extends State<SendToView>
     with SingleTickerProviderStateMixin {
   final TextEditingController withdrawalAddressController =
       TextEditingController();
+  final TextEditingController withdrawalMobileNumberController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -84,15 +87,24 @@ class _SendToViewState extends State<SendToView>
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(
-                  height: Sizes.spaceXLarge,
+                  height: Sizes.spaceSmall,
                 ),
                 const FromAccountWidget(),
                 const SizedBox(
                   height: Sizes.spaceNormal,
                 ),
+                WithdrawalAddressViaMobileInputView(
+                  withdrawalMobileNumberController:
+                      withdrawalMobileNumberController,
+                  withdrawalAddressController: withdrawalAddressController,
+                  caption: 'Use Didx:Pay Mobile Number', // l10n.to,
+                ),
+                const SizedBox(
+                  height: Sizes.spaceNormal,
+                ),
                 WithdrawalAddressInputView(
                   withdrawalAddressController: withdrawalAddressController,
-                  caption: l10n.to,
+                  caption: 'Send to Wallet Address', // 'l10n.to',
                 ),
               ],
             ),

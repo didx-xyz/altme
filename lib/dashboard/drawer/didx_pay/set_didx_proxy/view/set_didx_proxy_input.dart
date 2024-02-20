@@ -1,8 +1,10 @@
 import 'package:altme/dashboard/dashboard.dart';
+import 'package:altme/dashboard/home/tab_bar/tokens/widgets/select_crypto_type.dart';
 import 'package:altme/l10n/l10n.dart';
 import 'package:altme/app/app.dart';
 
 import 'package:altme/theme/theme.dart';
+import 'package:altme/wallet/cubit/wallet_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -124,40 +126,40 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                         ],
                       ),
                       const SizedBox(height: Sizes.spaceLarge),
-                      TextFormField(
-                        decoration: InputDecoration(
-                          labelText: l10n.walletAddress,
-                          hintText: l10n.walletAddressHint,
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.account_balance_wallet),
-                        ),
-                        validator: (value) {
-                          // Basic validation example
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your wallet address';
-                          }
-                          // TODO(laderlappen): Add more specific validation for wallet address format if needed
-                          return null; // Return null if the input is valid
-                        },
-                        onChanged: (value) {
-                          walletAddress = value;
-                        },
-                      ),
+                      const SelectCryptoWidget(),
+                      // const SizedBox(height: Sizes.spaceLarge),
+                      // TextFormField(
+                      //   decoration: InputDecoration(
+                      //     labelText: l10n.walletAddress,
+                      //     hintText: l10n.walletAddressHint,
+                      //     border: OutlineInputBorder(),
+                      //     prefixIcon: Icon(Icons.account_balance_wallet),
+                      //   ),
+                      //   validator: (value) {
+                      //     // Basic validation example
+                      //     if (value == null || value.isEmpty) {
+                      //       return 'Please enter your wallet address';
+                      //     }
+                      //     // TODO(laderlappen): Add more specific validation for wallet address format if needed
+                      //     return null; // Return null if the input is valid
+                      //   },
+                      //   onChanged: (value) {
+                      //     walletAddress = value;
+                      //   },
+                      // ),
                       const SizedBox(height: Sizes.spaceLarge),
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
                             if (phoneNumberValidated != null &&
-                                phoneNumberValidated != "" &&
-                                walletAddress != null &&
-                                walletAddress != "") {
+                                phoneNumberValidated != '') {
                               context
                                   .read<ProfileCubit>()
                                   .setPhoneNumber(phoneNumberValidated!);
                               showDialog<bool>(
                                 context: context,
                                 builder: (context) => ConfirmDialog(
-                                  title: l10n.updated, //l10n.proxyUpdated,
+                                  title: l10n.updated,
                                   yes: l10n.ok,
                                   showNoButton: false,
                                 ),
@@ -166,9 +168,9 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                               showDialog<bool>(
                                 context: context,
                                 builder: (context) => ConfirmDialog(
-                                  title: 'Error', //l10n.errorDialogTitle,
+                                  title: l10n.genericError,
                                   subtitle: l10n.ensureNumAndAddress,
-                                  yes: 'Ok', //l10n.ok,
+                                  yes: l10n.ok,
                                   showNoButton: false,
                                 ),
                               );
@@ -182,10 +184,17 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                         ),
                       ),
                       const SizedBox(height: Sizes.spaceNormal),
-                      Center(
-                        child: Text(
-                          'Phone number: ${context.read<ProfileCubit>().state.model.phoneNumber}',
-                        ),
+                      BlocBuilder<WalletCubit, WalletState>(
+                        builder: (context, state) {
+                          return Center(
+                            child: Text(
+                              'Debug info: \n Phone number: '
+                              '${context.read<ProfileCubit>().state.model.phoneNumber} '
+                              '\n ${context.read<WalletCubit>().state.currentAccount?.blockchainType} '
+                              '\n ${context.read<WalletCubit>().state.currentAccount?.walletAddress}',
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
