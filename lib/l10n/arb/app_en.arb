@@ -1043,5 +1043,10 @@
   "setupMobileDescriptionPay":"Receive/make payments via your phone number",
   "readProxy":"Show current number to wallet link",
   "updateProxy":"Update number to wallet link",
-  "deleteProxy":"Delete number to wallet link"
+  "deleteProxy":"Delete number to wallet link",
+  "update":"Update",
+  "ensureNumAndAddress":"Make sure to enter a number and address",
+  "updated":"Updated",
+  "walletAddress": "Wallet Address",
+  "walletAddressHint":"e.g., 1BoatSLRHtKNngkdXEeobR76b53LETtpyT"
 }

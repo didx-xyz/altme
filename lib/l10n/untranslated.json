@@ -948,7 +948,12 @@
     "setupMobileDescriptionPay",
     "readProxy",
     "updateProxy",
-    "deleteProxy"
+    "deleteProxy",
+    "update",
+    "ensureNumAndAddress",
+    "updated",
+    "walletAddress",
+    "walletAddressHint"
   ],
 
   "es": [
@@ -1900,7 +1905,12 @@
     "setupMobileDescriptionPay",
     "readProxy",
     "updateProxy",
-    "deleteProxy"
+    "deleteProxy",
+    "update",
+    "ensureNumAndAddress",
+    "updated",
+    "walletAddress",
+    "walletAddressHint"
   ],
 
   "fr": [
@@ -1908,7 +1918,12 @@
     "setupMobileDescriptionPay",
     "readProxy",
     "updateProxy",
-    "deleteProxy"
+    "deleteProxy",
+    "update",
+    "ensureNumAndAddress",
+    "updated",
+    "walletAddress",
+    "walletAddressHint"
   ],
 
   "it": [
@@ -2860,6 +2875,11 @@
     "setupMobileDescriptionPay",
     "readProxy",
     "updateProxy",
-    "deleteProxy"
+    "deleteProxy",
+    "update",
+    "ensureNumAndAddress",
+    "updated",
+    "walletAddress",
+    "walletAddressHint"
   ]
 }

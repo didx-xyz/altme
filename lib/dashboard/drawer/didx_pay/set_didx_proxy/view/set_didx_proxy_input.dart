@@ -110,9 +110,6 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                             decimal: false,
                           ),
                           inputBorder: const OutlineInputBorder(),
-                          onSaved: (PhoneNumber number) {
-                            print('On Saved: $number');
-                          },
                         ),
                       ),
                       const SizedBox(height: Sizes.spaceLarge),
@@ -128,9 +125,9 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                       ),
                       const SizedBox(height: Sizes.spaceLarge),
                       TextFormField(
-                        decoration: const InputDecoration(
-                          labelText: 'Wallet Address',
-                          hintText: 'e.g., 1BoatSLRHtKNngkdXEeobR76b53LETtpyT',
+                        decoration: InputDecoration(
+                          labelText: l10n.walletAddress,
+                          hintText: l10n.walletAddressHint,
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.account_balance_wallet),
                         ),
@@ -160,7 +157,7 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                               showDialog<bool>(
                                 context: context,
                                 builder: (context) => ConfirmDialog(
-                                  title: 'Updated', //l10n.proxyUpdated,
+                                  title: l10n.updated, //l10n.proxyUpdated,
                                   yes: l10n.ok,
                                   showNoButton: false,
                                 ),
@@ -168,10 +165,9 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                             } else {
                               showDialog<bool>(
                                 context: context,
-                                builder: (context) => const ConfirmDialog(
+                                builder: (context) => ConfirmDialog(
                                   title: 'Error', //l10n.errorDialogTitle,
-                                  subtitle:
-                                      'Make sure to enter a number and address', //l10n.errorDialogSubtitle,
+                                  subtitle: l10n.ensureNumAndAddress,
                                   yes: 'Ok', //l10n.ok,
                                   showNoButton: false,
                                 ),
@@ -182,14 +178,13 @@ class _UpdateProxyViewState extends State<UpdateProxyView> {
                             minimumSize: const Size(200, 50),
                             textStyle: const TextStyle(fontSize: 16),
                           ),
-                          child: Text(l10n.save),
+                          child: Text(l10n.update),
                         ),
                       ),
                       const SizedBox(height: Sizes.spaceNormal),
                       Center(
                         child: Text(
                           'Phone number: ${context.read<ProfileCubit>().state.model.phoneNumber}',
-                          // style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ),
                     ],
